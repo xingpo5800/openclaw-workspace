@@ -41,35 +41,43 @@ def resolve_inclusion(klines):
         prev = result[-1]
         curr = bars[i]
 
-        has_inclusion = (curr['high'] <= prev['high'] and curr['low'] >= prev['low']) or \
-                        (curr['high'] >= prev['high'] and curr['low'] <= prev['low'])
+        # 包含关系判断：K2完全在K1的范围内（边界相等视为包含）
+        has_inclusion_up = (curr['high'] <= prev['high'] and curr['low'] >= prev['low'])
+        has_inclusion_down = (curr['high'] >= prev['high'] and curr['low'] <= prev['low'])
 
-        if not has_inclusion:
+        # 无包含关系：直接添加
+        if not has_inclusion_up and not has_inclusion_down:
             result.append(curr)
             i += 1
             continue
 
-        direction_up = (curr['high'] >= prev['high'] and curr['low'] >= prev['low'])
-        direction_down = (curr['high'] <= prev['high'] and curr['low'] <= prev['low'])
+        # 确定方向：基于之前已处理K线确定当前趋势方向
+        # direction由result[-1]与curr的包含关系决定，而非简单比较
+        if has_inclusion_up:
+            # K2在K1内部，延续之前的方向（保持包含关系）
+            direction_up = True
+            direction_down = False
+        else:  # has_inclusion_down
+            # K1在K2内部（向下包含），延续之前的方向
+            direction_up = False
+            direction_down = True
 
         if direction_up:
+            # 向上包含：去高留低（取两根K线中高点的较大值，低点的较大值）
             merged = {
                 'date': curr['date'], 'open': prev['open'], 'close': curr['close'],
                 'high': max(prev['high'], curr['high']),
                 'low': max(prev['low'], curr['low']),
                 'volume': curr.get('volume', 0)
             }
-        elif direction_down:
+        else:
+            # 向下包含：去低留高（取两根K线中高点的较小值，低点的较小值）
             merged = {
                 'date': curr['date'], 'open': prev['open'], 'close': curr['close'],
                 'high': min(prev['high'], curr['high']),
                 'low': min(prev['low'], curr['low']),
                 'volume': curr.get('volume', 0)
             }
-        else:
-            result.append(curr)
-            i += 1
-            continue
 
         result[-1] = merged
         i += 1
