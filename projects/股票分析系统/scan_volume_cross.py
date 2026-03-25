@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-5日均量上穿60日均量扫描器 v1.1
+5日均量上穿60日均量扫描器 v1.2
 
 功能：
 1. 扫描追踪池
 2. 扫描量比排行榜Top100
 3. 找出5日均量正在上穿60日均量的股票
+4. 保存历史记录到CSV
 
 使用方法：
 python3 scan_volume_cross.py
@@ -149,12 +150,12 @@ def scan_stocks(stocks, name='未知'):
         ratio = data['ratio']
         slope = data['slope_5']
 
-        # 信号判断
+        # 信号判断（放宽条件）
         signal = None
-        if 0.80 <= ratio < 0.98 and slope > 0:
-            signal = '接近'
-        elif ratio >= 0.98 and slope > 0:
+        if ratio >= 0.98 and slope > 0:
             signal = '上穿'
+        elif slope > 30:
+            signal = '量增'  # 量能明显增加
 
         if signal:
             results.append({
@@ -200,10 +201,10 @@ def main():
             slope = data['slope_5']
 
             signal = None
-            if 0.80 <= ratio < 0.98 and slope > 0:
-                signal = '接近'
-            elif ratio >= 0.98 and slope > 0:
+            if ratio >= 0.98 and slope > 0:
                 signal = '上穿'
+            elif slope > 30:
+                signal = '量增'
 
             if signal:
                 pool_results.append({
@@ -252,26 +253,27 @@ def main():
     # 汇总
     if all_results:
         print('\n' + '=' * 70)
-        print('【汇总】最佳买入信号（接近 + 斜率>30 + RSI<52）')
+        print('【量增信号】5日均量线向上 + 斜率>30')
         print('-' * 70)
 
-        best = [r for r in all_results if r['signal'] == '接近' and r['slope'] > 30 and r['rsi'] < 52]
-        best.sort(key=lambda x: x['ratio'], reverse=True)
+        best = [r for r in all_results if r['signal'] == '量增']
+        best.sort(key=lambda x: x['rsi'])  # RSI低的优先
 
         if best:
-            for r in best:
+            for r in best[:20]:
+                rsi_ok = 'V' if r['rsi'] < 52 else ' '
                 print(f"  {r['name']:<10} {r['code']} 量比:{r['ratio']:.2f}x "
-                      f"斜率:{r['slope']:>+6.1f}% RSI:{r['rsi']:5.1f} "
+                      f"斜率:{r['slope']:>+6.1f}% RSI:{r['rsi']:5.1f}{rsi_ok} "
                       f"今日:{r['pct_today']:>+5.1f}% 20日:{r['pct_20']:>+6.1f}%")
         else:
             print('  暂无符合条件的股票')
 
-        print('\n【上穿成功观察】（已上穿 + 斜率>30）')
+        print('\n【上穿成功观察】5日均量已上穿60日均量 + 斜率>30')
         print('-' * 70)
-        observe = [r for r in all_results if r['signal'] == '上穿' and r['slope'] > 30]
-        observe.sort(key=lambda x: x['ratio'], reverse=True)
+        observe = [r for r in all_results if r['signal'] == '上穿']
+        observe.sort(key=lambda x: x['rsi'])  # RSI低的优先
         if observe:
-            for r in observe:
+            for r in observe[:20]:
                 rsi_ok = 'V' if r['rsi'] < 52 else ' '
                 print(f"  {r['name']:<10} {r['code']} 量比:{r['ratio']:.2f}x "
                       f"斜率:{r['slope']:>+6.1f}% RSI:{r['rsi']:5.1f}{rsi_ok} "
@@ -280,6 +282,14 @@ def main():
             print('  暂无符合条件的股票')
 
     print('\n' + '=' * 70)
+
+    # 保存历史记录
+    from datetime import datetime
+    today = datetime.now().strftime('%Y-%m-%d')
+    csv_path = os.path.join(os.path.dirname(__file__), 'scan_history.csv')
+    with open(csv_path, 'a') as f:
+        for r in all_results:
+            f.write(f"{today},{r['code']},{r['name']},{r['signal']},{r['ratio']:.2f},{r['slope']:+.1f},{r['rsi']:.1f},{r['pct_20']:+.1f},{r['pct_today']:+.1f},pending\n")
 
 
 if __name__ == '__main__':
