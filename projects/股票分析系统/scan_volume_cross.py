@@ -93,14 +93,14 @@ def get_hot_stocks(limit=100):
 
 
 def get_top_volume(limit=200):
-    """获取今日量比最高的股票"""
+    """获取今日量比最高的股票（排除ST和北交所）"""
     try:
         # 获取涨幅榜（量大的机会多）
         r = requests.get(
             'https://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData',
             params={
                 'page': 1,
-                'num': limit,
+                'num': limit * 2,  # 多取一些，过滤后够用
                 'sort': 'volume',
                 'asc': 0,
                 'node': 'hs_a'
@@ -110,13 +110,28 @@ def get_top_volume(limit=200):
         raw = r.json()
         stocks = []
         for item in raw:
+            name = item.get('name', '')
             code = item.get('symbol', '').replace('sz', '').replace('sh', '')
+            
+            # 排除ST股票
+            if 'ST' in name or '*ST' in name or 'S*ST' in name:
+                continue
+            
+            # 排除北交所（代码以8或4开头，上海4开头，深圳8开头需要额外判断）
+            # 北交所代码格式：bjxxxxx
+            if item.get('symbol', '').startswith('bj'):
+                continue
+            
             stocks.append({
                 'code': code,
-                'name': item.get('name', ''),
+                'name': name,
                 'price': float(item.get('trade', 0)),
                 'pct': float(item.get('pricechange', 0)) / float(item.get('settlement', 1)) * 100 if item.get('settlement') and float(item.get('settlement')) > 0 else 0
             })
+            
+            if len(stocks) >= limit:
+                break
+        
         return stocks
     except Exception as e:
         return []
