@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>灵犀任务看板</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; min-height: 100vh; }
+.header { background: #16213e; padding: 20px; text-align: center; border-bottom: 2px solid #0f3460; }
+.header h1 { color: #e94560; font-size: 1.5em; }
+.header p { color: #888; font-size: 0.85em; margin-top: 5px; }
+.board { display: flex; gap: 16px; padding: 20px; overflow-x: auto; min-height: calc(100vh - 100px); align-items: flex-start; }
+.col { flex: 1; min-width: 280px; max-width: 350px; }
+.col-title { font-size: 0.9em; font-weight: 600; padding: 10px; border-radius: 8px 8px 0 0; text-align: center; margin-bottom: 0; }
+.col-title.todo { background: #e94560; }
+.col-title.doing { background: #0f3460; color: #fff; }
+.col-title.done { background: #1b5e20; color: #fff; }
+.col-body { background: #16213e; border-radius: 0 0 8px 8px; padding: 10px; min-height: 400px; }
+.card { background: #1f4068; border-radius: 8px; padding: 12px; margin-bottom: 10px; cursor: grab; transition: all 0.2s; border-left: 3px solid transparent; }
+.card:hover { background: #2a5a8a; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.card-title { font-size: 0.95em; font-weight: 600; margin-bottom: 6px; color: #fff; }
+.card-desc { font-size: 0.8em; color: #aaa; line-height: 1.4; }
+.card-meta { font-size: 0.75em; color: #666; margin-top: 8px; }
+.card.priority-high { border-left-color: #e94560; }
+.card.priority-mid { border-left-color: #f39c12; }
+.card.priority-low { border-left-color: #2ecc71; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7em; margin-right: 4px; }
+.badge-high { background: #e94560; }
+.badge-mid { background: #f39c12; color: #000; }
+.badge-low { background: #2ecc71; color: #000; }
+.badge-stock { background: #9c27b0; }
+.badge-anim { background: #00bcd4; }
+.badge-rule { background: #ff9800; }
+.badge-done { background: #1b5e20; }
+.add-btn { width: 100%; padding: 10px; background: #0f3460; border: 2px dashed #333; border-radius: 8px; color: #666; cursor: pointer; font-size: 0.85em; margin-bottom: 10px; transition: all 0.2s; }
+.add-btn:hover { border-color: #e94560; color: #e94560; }
+.dragging { opacity: 0.5; }
+.drag-over { background: #2a3a5a !important; }
+.empty { text-align: center; color: #444; padding: 40px 0; font-size: 0.85em; }
+/* Modal */
+.modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
+.modal.show { display: flex; }
+.modal-content { background: #16213e; border-radius: 12px; padding: 24px; width: 400px; max-width: 90%; }
+.modal-content h3 { color: #e94560; margin-bottom: 16px; }
+.modal-content input, .modal-content textarea, .modal-content select { width: 100%; padding: 10px; background: #1f4068; border: 1px solid #333; border-radius: 6px; color: #fff; font-size: 0.9em; margin-bottom: 10px; }
+.modal-content textarea { height: 80px; resize: vertical; }
+.modal-content .btn-row { display: flex; gap: 10px; margin-top: 16px; }
+.modal-content button { flex: 1; padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; }
+.btn-save { background: #e94560; color: #fff; }
+.btn-cancel { background: #333; color: #ccc; }
+.last-update { position: fixed; bottom: 10px; right: 20px; font-size: 0.7em; color: #444; }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🎯 灵犀任务看板</h1>
+<p>拖拽移动 · 自动保存 · 毅哥 & 灵犀共建</p>
+</div>
+
+<div class="board">
+<div class="col">
+<div class="col-title todo">⏳ 待办</div>
+<div class="col-body" id="col-todo" ondragover="allowDrop(event)" ondrop="drop(event,'todo')">
+<button class="add-btn" onclick="openAdd('todo')">+ 添加任务</button>
+<div id="list-todo"></div>
+</div>
+</div>
+
+<div class="col">
+<div class="col-title doing">🔄 进行中</div>
+<div class="col-body" id="col-doing" ondragover="allowDrop(event)" ondrop="drop(event,'doing')">
+<button class="add-btn" onclick="openAdd('doing')">+ 添加任务</button>
+<div id="list-doing"></div>
+</div>
+</div>
+
+<div class="col">
+<div class="col-title done">✅ 已完成</div>
+<div class="col-body" id="col-done" ondragover="allowDrop(event)" ondrop="drop(event,'done')">
+<div id="list-done"></div>
+</div>
+</div>
+</div>
+
+<div class="last-update" id="lastUpdate"></div>
+
+<!-- 添加/编辑弹窗 -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3 id="modalTitle">添加任务</h3>
+<input type="hidden" id="editId">
+<input type="hidden" id="editCol">
+<input id="taskTitle" placeholder="任务标题" maxlength="60">
+<textarea id="taskDesc" placeholder="任务描述（可选）" maxlength="200"></textarea>
+<select id="taskPriority">
+<option value="high">🔴 高优先级</option>
+<option value="mid" selected>🟡 中优先级</option>
+<option value="low">🟢 低优先级</option>
+</select>
+<div class="btn-row">
+<button class="btn-save" onclick="saveTask()">保存</button>
+<button class="btn-cancel" onclick="closeModal()">取消</button>
+</div>
+</div>
+</div>
+
+<script>
+// 数据存储
+const STORE_KEY = 'lingxi-task-board';
+let tasks = [];
+
+function load() {
+  const d = localStorage.getItem(STORE_KEY);
+  tasks = d ? JSON.parse(d) : getDefaultTasks();
+  render();
+  document.getElementById('lastUpdate').textContent = '最后更新: ' + new Date().toLocaleString('zh-CN');
+}
+
+function save() {
+  localStorage.setItem(STORE_KEY, JSON.stringify(tasks));
+  document.getElementById('lastUpdate').textContent = '最后更新: ' + new Date().toLocaleString('zh-CN');
+}
+
+function getDefaultTasks() {
+  return [
+    { id: 1, title: '设计股票研究员agent模板', desc: '参考agency-agents模式，定义身份+专长+交付物+成功指标', col: 'todo', priority: 'high', tags: ['stock'], created: '2026-03-23' },
+    { id: 2, title: '测试program.md轻量级技能模板', desc: '参考autoresearch，用markdown定义任务提示词', col: 'todo', priority: 'mid', tags: ['rule'], created: '2026-03-23' },
+    { id: 3, title: '动画制作方案确定', desc: '等毅哥发参考视频后分析，确定素材拼接方案', col: 'todo', priority: 'mid', tags: ['anim'], created: '2026-03-23' },
+    { id: 4, title: '波浪理论深入研究', desc: '缠论对比学习，实战验证波浪判断', col: 'todo', priority: 'low', tags: ['stock'], created: '2026-03-23' },
+    { id: 5, title: '量化策略回测优化', desc: '当前策略回测效果差，需要结合大盘过滤器', col: 'todo', priority: 'high', tags: ['stock'], created: '2026-03-23' },
+    { id: 6, title: 'GitHub项目学习', desc: 'Agency agents、Auto research、SpacetimeDB、Lightpanda、Agency swarm', col: 'done', priority: 'high', tags: ['rule'], created: '2026-03-23' },
+    { id: 7, title: 'A股监控系统搭建', desc: '东方财富API、实时行情、信号系统、回测引擎', col: 'done', priority: 'high', tags: ['stock'], created: '2026-03-22' },
+    { id: 8, title: '道氏理论+波浪理论学习', desc: '大盘下降趋势确认，德业历史最高位分析', col: 'done', priority: 'high', tags: ['stock'], created: '2026-03-23' },
+    { id: 9, title: '宏观分析框架建立', desc: '中东战争+纳斯达克-443点+原油$98', col: 'done', priority: 'high', tags: ['stock'], created: '2026-03-23' },
+    { id: 10, title: '学习边界规则', desc: '保护机制、学偏识别与补救', col: 'done', priority: 'high', tags: ['rule'], created: '2026-03-23' },
+    { id: 11, title: '每日早报+收盘分析', desc: '每天9:10早报，15:30收盘分析，语音播报', col: 'doing', priority: 'high', tags: ['stock'], created: '2026-03-23' },
+  ];
+}
+
+function render() {
+  ['todo', 'doing', 'done'].forEach(col => {
+    const el = document.getElementById('list-' + col);
+    const items = tasks.filter(t => t.col === col);
+    if (items.length === 0) {
+      el.innerHTML = col === 'todo' ? '' : '<div class="empty">暂无任务</div>';
+      if (col === 'todo') el.innerHTML = '<button class="add-btn" onclick="openAdd(\'todo\')">+ 添加任务</button>';
+      return;
+    }
+    let html = col === 'todo' ? '<button class="add-btn" onclick="openAdd(\'todo\')">+ 添加任务</button>' : '';
+    items.forEach(t => {
+      const tags = t.tags ? t.tags.map(tag => `<span class="badge badge-${tag}">${tag.toUpperCase()}</span>`).join('') : '';
+      const priorityLabel = {high:'🔴', mid:'🟡', low:'🟢'}[t.priority];
+      const priorityClass = `priority-${t.priority}`;
+      html += `<div class="card ${priorityClass}" draggable="true" ondragstart="dragStart(event,${t.id})" onclick="editTask(${t.id})">
+        <div class="card-title">${priorityLabel} ${t.title}</div>
+        ${t.desc ? `<div class="card-desc">${t.desc}</div>` : ''}
+        <div class="card-meta">${tags} ${t.created || ''}</div>
+      </div>`;
+    });
+    el.innerHTML = html;
+  });
+}
+
+// 拖拽
+let dragId = null;
+function dragStart(e, id) { dragId = id; e.target.classList.add('dragging'); }
+function allowDrop(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+function drop(e, col) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  if (dragId !== null) {
+    const t = tasks.find(t => t.id === dragId);
+    if (t) { t.col = col; save(); render(); }
+    dragId = null;
+  }
+}
+
+// 添加/编辑
+function openAdd(col) {
+  document.getElementById('modalTitle').textContent = '添加任务';
+  document.getElementById('editId').value = '';
+  document.getElementById('editCol').value = col;
+  document.getElementById('taskTitle').value = '';
+  document.getElementById('taskDesc').value = '';
+  document.getElementById('taskPriority').value = 'mid';
+  document.getElementById('modal').classList.add('show');
+  document.getElementById('taskTitle').focus();
+}
+function editTask(id) {
+  const t = tasks.find(t => t.id === id);
+  if (!t) return;
+  document.getElementById('modalTitle').textContent = '编辑任务';
+  document.getElementById('editId').value = t.id;
+  document.getElementById('editCol').value = t.col;
+  document.getElementById('taskTitle').value = t.title;
+  document.getElementById('taskDesc').value = t.desc || '';
+  document.getElementById('taskPriority').value = t.priority || 'mid';
+  document.getElementById('modal').classList.add('show');
+  document.getElementById('taskTitle').focus();
+}
+function closeModal() { document.getElementById('modal').classList.remove('show'); }
+function saveTask() {
+  const title = document.getElementById('taskTitle').value.trim();
+  if (!title) return;
+  const id = document.getElementById('editId').value;
+  const col = document.getElementById('editCol').value;
+  const desc = document.getElementById('taskDesc').value.trim();
+  const priority = document.getElementById('taskPriority').value;
+  if (id) {
+    const t = tasks.find(t => t.id === parseInt(id));
+    if (t) { t.title = title; t.desc = desc; t.priority = priority; t.col = col; }
+  } else {
+    tasks.push({ id: Date.now(), title, desc, col, priority, created: new Date().toLocaleDateString('zh-CN') });
+  }
+  save(); render(); closeModal();
+}
+// ESC关闭弹窗
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+// 点击外部关闭
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+
+load();
+</script>
+</body>
+</html>

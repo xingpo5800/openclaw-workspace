@@ -1,0 +1,6 @@
+{
+  "api_key": "",
+  "base_url": "ws://127.0.0.1:8090/acp",
+  "timeout": 60,
+  "stream": true
+}

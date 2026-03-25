@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-browser-clawdbot": {
+      "version": "0.1.0",
+      "installedAt": 1774012529652
+    },
+    "find-skills": {
+      "version": "0.1.0",
+      "installedAt": 1774017372482
+    },
+    "openclaw-tavily-search": {
+      "version": "0.1.0",
+      "installedAt": 1774110567125
+    }
+  }
+}

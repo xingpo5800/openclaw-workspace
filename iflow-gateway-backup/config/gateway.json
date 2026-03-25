@@ -1,0 +1,19 @@
+{
+  "server": {
+    "http_port": 8086,
+    "iflow_port": 8090,
+    "timeout": 60
+  },
+  "gateway": {
+    "max_topics": 5,
+    "max_tokens_per_topic": 2000,
+    "max_cache_size": 1000,
+    "max_summary_length": 500,
+    "chunk_size": 100,
+    "enable_compression": true
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "../logs/gateway.log"
+  }
+}

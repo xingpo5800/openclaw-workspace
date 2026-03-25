@@ -1,0 +1,312 @@
+Metadata-Version: 2.4
+Name: iflow-sdk
+Version: 0.1.0
+Summary: Python SDK for iFlow CLI - AI Agent Integration
+Home-page: https://github.com/yourusername/iflow-cli-sdk-python
+Author: iFlow Team
+Author-email: iFlow Team <iflow@example.com>
+License: MIT
+Project-URL: Homepage, https://github.com/iflow/iflow-sdk-python
+Project-URL: Documentation, https://docs.iflow.ai/sdk/python
+Project-URL: Repository, https://github.com/iflow/iflow-sdk-python
+Project-URL: Issues, https://github.com/iflow/iflow-sdk-python/issues
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: websockets>=11.0
+Requires-Dist: aiohttp>=3.8.0
+Requires-Dist: typing-extensions>=4.0.0; python_version < "3.11"
+Requires-Dist: pydantic>=2.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.21.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0; extra == "dev"
+Requires-Dist: black>=23.0; extra == "dev"
+Requires-Dist: ruff>=0.1.0; extra == "dev"
+Requires-Dist: mypy>=1.0; extra == "dev"
+Requires-Dist: types-aiofiles; extra == "dev"
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-python
+
+# iFlow Python SDK
+
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![WebSocket Protocol](https://img.shields.io/badge/protocol-ACP%20v1-orange)](docs/protocol.md)
+
+A powerful Python SDK for interacting with iFlow CLI using the Agent Communication Protocol (ACP). Build AI-powered applications with full control over conversations, tool execution, and SubAgent orchestration.
+
+**✨ Key Feature: The SDK automatically manages the iFlow process - no manual setup required!**
+
+## Features
+
+- 🚀 **Automatic Process Management** - Zero-config setup! SDK auto-starts and manages iFlow CLI
+- 🔌 **Smart Port Detection** - Automatically finds available ports, no conflicts
+- 🔄 **Bidirectional Communication** - Real-time streaming of messages and responses
+- 🛠️ **Tool Call Management** - Handle and control tool executions with fine-grained permissions
+- 🤖 **SubAgent Support** - Track and manage multiple AI agents with `agent_id` propagation
+- 📋 **Task Planning** - Receive and process structured task plans
+- 🔍 **Raw Data Access** - Debug and inspect protocol-level messages
+- ⚡ **Async/Await Support** - Modern asynchronous Python with full type hints
+- 🎯 **Simple & Advanced APIs** - From one-line queries to complex conversation management
+- 📦 **Full ACP v1 Protocol** - Complete implementation of the Agent Communication Protocol
+
+## Installation
+
+### 1. Install iFlow CLI
+
+If you haven't installed iFlow CLI yet:
+
+**Mac/Linux/Ubuntu:**
+```bash
+bash -c "$(curl -fsSL https://gitee.com/iflow-ai/iflow-cli/raw/main/install.sh)"
+```
+
+**Windows:**
+```bash
+npm install -g @iflow-ai/iflow-cli@latest
+```
+
+### 2. Install the SDK
+
+**From source (currently the only method):**
+
+```bash
+git clone https://github.com/yourusername/iflow-cli-sdk-python.git
+cd iflow-cli-sdk-python
+pip install -e .
+```
+
+**Coming soon to PyPI:**
+```bash
+# Will be available after publishing to PyPI
+pip install iflow-cli-sdk
+```
+
+## Quick Start
+
+The SDK **automatically manages the iFlow process** - no manual setup required!
+
+### Default Usage (Automatic Process Management)
+
+```python
+import asyncio
+from src.iflow_sdk import IFlowClient
+
+async def main():
+    # SDK automatically:
+    # 1. Detects if iFlow is installed
+    # 2. Starts iFlow process if not running
+    # 3. Finds an available port
+    # 4. Cleans up on exit
+    async with IFlowClient() as client:
+        await client.send_message("Hello, iFlow!")
+        
+        async for message in client.receive_messages():
+            print(message)
+            # Process messages...
+
+asyncio.run(main())
+```
+
+**No need to manually start iFlow!** The SDK handles everything for you.
+
+### Advanced: Manual Process Control
+
+If you need to manage iFlow yourself (rare cases):
+
+```python
+import asyncio
+from src.iflow_sdk import IFlowClient, IFlowOptions
+
+async def main():
+    # Disable automatic process management
+    options = IFlowOptions(
+        auto_start_process=False,
+        url="ws://localhost:8090/acp"  # Connect to existing iFlow
+    )
+    
+    async with IFlowClient(options) as client:
+        await client.send_message("Hello, iFlow!")
+
+asyncio.run(main())
+```
+
+**Note:** Manual mode requires you to start iFlow separately:
+```bash
+iflow --experimental-acp --port 8090
+```
+
+### Simple Examples
+
+#### Simple Query
+
+```python
+import asyncio
+from src.iflow_sdk import query
+
+async def main():
+    response = await query("What is the capital of France?")
+    print(response)  # "The capital of France is Paris."
+
+asyncio.run(main())
+```
+
+#### Interactive Conversation
+
+```python
+import asyncio
+from src.iflow_sdk import IFlowClient, AssistantMessage, TaskFinishMessage
+
+async def chat():
+    async with IFlowClient() as client:
+        await client.send_message("Explain quantum computing")
+        
+        async for message in client.receive_messages():
+            if isinstance(message, AssistantMessage):
+                print(message.chunk.text, end="", flush=True)
+            elif isinstance(message, TaskFinishMessage):
+                break
+
+asyncio.run(chat())
+```
+
+#### Tool Call Control
+
+```python
+import asyncio
+from src.iflow_sdk import IFlowClient, IFlowOptions, PermissionMode, ToolCallMessage, TaskFinishMessage
+
+async def main():
+    options = IFlowOptions(permission_mode=PermissionMode.CONFIRM)
+    
+    async with IFlowClient(options) as client:
+        await client.send_message("Create a file called test.txt")
+        
+        async for message in client.receive_messages():
+            if isinstance(message, ToolCallMessage):
+                print(f"Tool requested: {message.label}")
+                # Tool calls are handled automatically based on permission_mode
+            elif isinstance(message, TaskFinishMessage):
+                break
+
+asyncio.run(main())
+```
+
+## API Reference
+
+### Core Classes
+
+- **`IFlowClient`**: Main client for bidirectional communication
+- **`IFlowOptions`**: Configuration options
+- **`RawDataClient`**: Access to raw protocol data
+
+### Message Types
+
+- **`AssistantMessage`**: AI assistant responses
+- **`ToolCallMessage`**: Tool execution requests
+- **`PlanMessage`**: Structured task plans
+- **`TaskFinishMessage`**: Task completion signal
+
+### Convenience Functions
+
+- `query(prompt)`: Simple synchronous query
+- `query_stream(prompt)`: Streaming responses
+- `query_sync(prompt)`: Synchronous with timeout
+
+## Project Structure
+
+```
+iflow-sdk-python/
+├── src/iflow_sdk/
+│   ├── __init__.py          # Public API exports
+│   ├── client.py            # Main IFlowClient implementation
+│   ├── query.py             # Simple query functions
+│   ├── types.py             # Type definitions and messages
+│   ├── raw_client.py        # Raw protocol access
+│   └── _internal/
+│       ├── protocol.py      # ACP protocol handler
+│       ├── transport.py     # WebSocket transport layer
+│       └── launcher.py      # iFlow process management
+├── tests/                   # Test suite
+│   ├── test_basic.py        # Basic functionality tests
+│   └── test_protocol.py     # Protocol compliance tests
+├── examples/                # Usage examples
+│   ├── comprehensive_demo.py
+│   ├── quick_start.py
+│   └── advanced_client.py
+└── docs/                    # Documentation
+```
+
+## Development
+
+### Running Tests
+
+```bash
+# Run all tests
+pytest tests/
+
+# Run with coverage
+pytest tests/ --cov=src/iflow_sdk
+
+# Run specific test
+pytest tests/test_basic.py
+```
+
+### Code Quality
+
+```bash
+# Format code
+black src/ tests/
+
+# Sort imports
+isort src/ tests/
+
+# Check style
+flake8 src/ tests/
+```
+
+## Protocol Support
+
+The SDK implements the Agent Communication Protocol (ACP) v1, supporting:
+
+- **Session Management**: Create, load, and manage conversation sessions
+- **Message Types**: 
+  - `agent_message_chunk` - Assistant responses
+  - `agent_thought_chunk` - Internal reasoning
+  - `tool_call` / `tool_call_update` - Tool execution lifecycle
+  - `plan` - Structured task planning
+  - `user_message_chunk` - User message echoing
+- **Authentication**: Built-in iFlow authentication
+- **File System Access**: Read/write file permissions
+- **SubAgent Support**: Full `agent_id` tracking and management
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/yourusername/iflow-sdk-python/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/iflow-sdk-python/discussions)
+
+---
+
+Built with ❤️ for the AI development community

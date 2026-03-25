@@ -1,0 +1,10 @@
+# 大文件不上传
+books/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+
+# 缓存
+__pycache__/
+*.pyc
