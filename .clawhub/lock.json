@@ -36,6 +36,14 @@
     "self-improving": {
       "version": "1.2.16",
       "installedAt": 1774544380600
+    },
+    "remotion-video-toolkit": {
+      "version": "1.4.0",
+      "installedAt": 1774544876933
+    },
+    "cron-mastery": {
+      "version": "1.0.3",
+      "installedAt": 1774544976890
     }
   }
 }
