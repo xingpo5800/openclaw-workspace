@@ -1,0 +1,222 @@
+Config warnings:\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+- plugins.entries.openclaw-weixin: plugin not found: openclaw-weixin (stale config entry ignored; remove it from plugins config)
+Config warnings:\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+- plugins.entries.openclaw-weixin: plugin not found: openclaw-weixin (stale config entry ignored; remove it from plugins config)
+[plugins] plugins.allow is empty; discovered non-bundled plugins may auto-load: feishu (/Users/kevin/.nvm/versions/node/v24.14.0/lib/node_modules/openclaw/dist/extensions/feishu/index.js). Set plugins.allow to explicit trusted ids.
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+Gateway agent failed; falling back to embedded: Error: gateway timeout after 150000ms
+Gateway target: ws://127.0.0.1:18789
+Source: local loopback
+Config: /Users/kevin/.openclaw/openclaw.json
+Bind: loopback
+Config warnings:\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+- plugins.entries.openclaw-weixin: plugin not found: openclaw-weixin (stale config entry ignored; remove it from plugins config)
+[skills] Skipping skill path that resolves outside its configured root.
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] plugins.allow is empty; discovered non-bundled plugins may auto-load: feishu (/Users/kevin/.nvm/versions/node/v24.14.0/lib/node_modules/openclaw/dist/extensions/feishu/index.js). Set plugins.allow to explicit trusted ids.
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10979 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=10990 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=minimax-portal/MiniMax-M2.5-highspeed reason=timeout next=iflow/glm-4.7
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=glm-4.7 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=glm-4.7 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=glm-4.7 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=glm-4.7 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run failover decision: runId=a-46e28d6d-06b577d9 stage=assistant decision=fallback_model reason=timeout provider=iflow/glm-4.7 profile=-
+[diagnostic] lane task error: lane=main durationMs=21367 error="FailoverError: LLM request failed: network connection error."
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=21374 error="FailoverError: LLM request failed: network connection error."
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/glm-4.7 reason=timeout next=iflow/iflow-rome-30ba3b
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=iflow-rome-30ba3b provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=iflow-rome-30ba3b provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=iflow-rome-30ba3b provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=iflow-rome-30ba3b provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run failover decision: runId=a-46e28d6d-06b577d9 stage=assistant decision=fallback_model reason=timeout provider=iflow/iflow-rome-30ba3b profile=-
+[diagnostic] lane task error: lane=main durationMs=19639 error="FailoverError: LLM request failed: network connection error."
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=19646 error="FailoverError: LLM request failed: network connection error."
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/iflow-rome-30ba3b reason=timeout next=iflow/deepseek-v3.2
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=deepseek-v3.2 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=deepseek-v3.2 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=deepseek-v3.2 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=deepseek-v3.2 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run failover decision: runId=a-46e28d6d-06b577d9 stage=assistant decision=fallback_model reason=timeout provider=iflow/deepseek-v3.2 profile=-
+[diagnostic] lane task error: lane=main durationMs=19420 error="FailoverError: LLM request failed: network connection error."
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=19427 error="FailoverError: LLM request failed: network connection error."
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/deepseek-v3.2 reason=timeout next=iflow/glm-5
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10758 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=10766 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/glm-5 reason=timeout next=iflow/qwen3-coder-plus
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=qwen3-coder-plus provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=qwen3-coder-plus provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=qwen3-coder-plus provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=qwen3-coder-plus provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run failover decision: runId=a-46e28d6d-06b577d9 stage=assistant decision=fallback_model reason=timeout provider=iflow/qwen3-coder-plus profile=-
+[diagnostic] lane task error: lane=main durationMs=28630 error="FailoverError: LLM request failed: network connection error."
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=28638 error="FailoverError: LLM request failed: network connection error."
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/qwen3-coder-plus reason=timeout next=iflow/kimi-k2-thinking
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=11254 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=11263 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/kimi-k2-thinking reason=timeout next=iflow/minimax-m2.5
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=11203 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=11212 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/minimax-m2.5 reason=timeout next=iflow/kimi-k2.5
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=kimi-k2.5 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=kimi-k2.5 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=kimi-k2.5 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run agent end: runId=a-46e28d6d-06b577d9 isError=true model=kimi-k2.5 provider=iflow error=LLM request failed: network connection error. rawError=Connection error.
+[agent/embedded] embedded run failover decision: runId=a-46e28d6d-06b577d9 stage=assistant decision=fallback_model reason=timeout provider=iflow/kimi-k2.5 profile=-
+[diagnostic] lane task error: lane=main durationMs=25848 error="FailoverError: LLM request failed: network connection error."
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=25855 error="FailoverError: LLM request failed: network connection error."
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/kimi-k2.5 reason=timeout next=iflow/kimi-k2-0905
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=11241 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=11249 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/kimi-k2-0905 reason=timeout next=zai/glm-5
+[diagnostic] lane task error: lane=main durationMs=119 error="FailoverError: No available auth profile for zai (all in cooldown or unavailable)."
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=126 error="FailoverError: No available auth profile for zai (all in cooldown or unavailable)."
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=zai/glm-5 reason=rate_limit next=zai/glm-4.7-flash
+[diagnostic] lane task error: lane=main durationMs=4 error="FailoverError: No available auth profile for zai (all in cooldown or unavailable)."
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=12 error="FailoverError: No available auth profile for zai (all in cooldown or unavailable)."
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=zai/glm-4.7-flash reason=rate_limit next=zai/glm-4.5-flash
+[diagnostic] lane task error: lane=main durationMs=6 error="FailoverError: No available auth profile for zai (all in cooldown or unavailable)."
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=13 error="FailoverError: No available auth profile for zai (all in cooldown or unavailable)."
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=zai/glm-4.5-flash reason=rate_limit next=localai/qwen2.5-coder.gguf
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10596 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=10603 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=localai/qwen2.5-coder.gguf reason=timeout next=minimax-portal/MiniMax-M2.5-Lightning
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10668 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-46e28d6d-06b577d9 durationMs=10675 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=minimax-portal/MiniMax-M2.5-Lightning reason=timeout next=none
+Error: All models failed (15): minimax-portal/MiniMax-M2.5-highspeed: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock (timeout) | iflow/glm-4.7: LLM request failed: network connection error. (timeout) | iflow/iflow-rome-30ba3b: LLM request failed: network connection error. (timeout) | iflow/deepseek-v3.2: LLM request failed: network connection error. (timeout) | iflow/glm-5: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock (timeout) | iflow/qwen3-coder-plus: LLM request failed: network connection error. (timeout) | iflow/kimi-k2-thinking: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock (timeout) | iflow/minimax-m2.5: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock (timeout) | iflow/kimi-k2.5: LLM request failed: network connection error. (timeout) | iflow/kimi-k2-0905: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock (timeout) | zai/glm-5: No available auth profile for zai (all in cooldown or unavailable). (rate_limit) | zai/glm-4.7-flash: No available auth profile for zai (all in cooldown or unavailable). (rate_limit) | zai/glm-4.5-flash: No available auth profile for zai (all in cooldown or unavailable). (rate_limit) | localai/qwen2.5-coder.gguf: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock (timeout) | minimax-portal/MiniMax-M2.5-Lightning: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-46e28d6d-06b577d9.jsonl.lock (timeout)

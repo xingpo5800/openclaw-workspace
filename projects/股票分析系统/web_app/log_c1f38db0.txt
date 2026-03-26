@@ -1,0 +1,2 @@
+Config warnings:\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+error: required option '-m, --message <text>' not specified

@@ -1,0 +1,15 @@
+{
+  "scan_time": "2026-03-26T14:53:49.453762",
+  "strategy": "5日量上穿60日均量",
+  "conditions": {
+    "slope_threshold": 30,
+    "rsi_max": 52,
+    "vol_ratio_range": [
+      0.85,
+      1.05
+    ]
+  },
+  "total_scanned": 87,
+  "total_matched": 0,
+  "results": []
+}

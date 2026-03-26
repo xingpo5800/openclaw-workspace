@@ -1,0 +1,49 @@
+Config warnings:\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+- plugins.entries.openclaw-weixin: plugin not found: openclaw-weixin (stale config entry ignored; remove it from plugins config)
+Config warnings:\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+- plugins.entries.openclaw-weixin: plugin not found: openclaw-weixin (stale config entry ignored; remove it from plugins config)
+[plugins] plugins.allow is empty; discovered non-bundled plugins may auto-load: feishu (/Users/kevin/.nvm/versions/node/v24.14.0/lib/node_modules/openclaw/dist/extensions/feishu/index.js). Set plugins.allow to explicit trusted ids.
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+已有完整的分析脚本，直接运行：
+分析完成，按要求格式生成结果文件：
+分析完成，结果已写入 `89553c07.json`。
+
+**📊 601899 紫金矿业 - 四级别综合分析**
+
+| 周期 | 笔 | 中枢 | 背驰 | 分型 | 买卖点 | 评分 |
+|------|----|----|------|------|--------|------|
+| 5分钟 | 10 | 0 | 无 | 底分型 | 无 | 21.5 |
+| 15分钟 | 13 | 1 | 无 | 无 | 无 | 20.0 |
+| 30分钟 | 5 | 1 | 底背驰 | 无 | **1买** | 20.0 |
+| 日线 | 1 | 0 | 无 | **顶分型** | 无 | 19.0 |
+
+**四维总分：20.1/40**
+
+**核心信号：**
+- ✅ 30分钟出现底背驰 + 第一类买点（反弹信号）
+- ⚠️ 日线顶分型 + 大阴线（短期压力）
+- ⚠️ 量能持续萎缩（vol_ratio_5 < 1）
+
+**建议：观望**
+- 止损：¥31.17
+- 目标：¥35.34
+- 简报：30分钟级别出现底背驰+1买，短期或有反弹，但日线顶分型+大阴线压制，整体偏弱，等待更明确信号。

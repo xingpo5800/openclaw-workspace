@@ -23,6 +23,8 @@
 
 | 类别 | 索引文件 |
 |------|---------|
+| **核心记忆** | memory/core-memory.md（每次必读） |
+| 知识地图 | memory/knowledge-map.md |
 | 规则系统 | rules-index.md |
 | 记忆 | memory/SUMMARY.md |
 | 知识 | knowledge/SUMMARY.md |

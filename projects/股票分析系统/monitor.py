@@ -204,15 +204,15 @@ def watch_once():
         if chg_pct_val > 9.5:
             status = "🔴涨停"
         elif chg_pct_val > 5:
-            status = "🚀大涨"
+            status = "🔴大涨"
         elif chg_pct_val > 0:
-            status = "🟢上涨"
+            status = "🔴上涨"
         elif chg_pct_val < -5:
-            status = "🔵大跌"
+            status = "🟢大跌"
         elif chg_pct_val < -9.5:
-            status = "⚫跌停"
+            status = "🟢跌停"
         elif chg_pct_val < 0:
-            status = "🔴下跌"
+            status = "🟢下跌"
         else:
             status = "➖平"
         

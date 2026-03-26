@@ -1,0 +1,28 @@
+{
+  "scan_time": "2026-03-26T14:55:34.453406",
+  "strategy": "5日量上穿60日均量",
+  "conditions": {
+    "slope_threshold": 30,
+    "rsi_max": 52,
+    "vol_ratio_range": [
+      0.85,
+      1.05
+    ]
+  },
+  "total_scanned": 87,
+  "total_matched": 1,
+  "results": [
+    {
+      "name": "中矿资源",
+      "code": "002738",
+      "secid": "0.002738",
+      "price": 68.19,
+      "pct": 6.02,
+      "slope": 71.5,
+      "rsi": 27.73,
+      "vol_ratio": 1.02,
+      "ma5": 423332.0,
+      "ma60": 276435.0
+    }
+  ]
+}

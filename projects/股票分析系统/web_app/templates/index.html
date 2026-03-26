@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+{% raw %}
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灵犀量化看板</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+            background: #0d1117; 
+            color: #e6edf3; 
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, #161b22, #1f2937);
+            padding: 20px 40px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header h1 { font-size: 22px; font-weight: 600; }
+        .header .logo { color: #58a6ff; font-size: 28px; }
+        .header .subtitle { color: #8b949e; font-size: 13px; margin-top: 2px; }
+        
+        .main { max-width: 1400px; margin: 0 auto; padding: 24px 40px; }
+        
+        .section-title {
+            font-size: 14px;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 14px;
+            background: #58a6ff;
+            border-radius: 2px;
+        }
+        
+        /* 追踪池表格 */
+        .pool-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #161b22;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+            margin-bottom: 32px;
+        }
+        .pool-table th {
+            background: #1f2937;
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 12px;
+            color: #8b949e;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .pool-table td {
+            padding: 14px 16px;
+            border-top: 1px solid #21262d;
+            font-size: 14px;
+        }
+        .pool-table tr:hover td { background: #1c2128; }
+        .pool-table .stock-name { font-weight: 600; color: #e6edf3; }
+        .pool-table .stock-code { color: #8b949e; font-size: 12px; }
+        
+        .score {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .score.high { background: rgba(63,185,80,0.15); color: #3fb950; }
+        .score.mid { background: rgba(210,153,34,0.15); color: #d29922; }
+        .score.low { background: rgba(248,81,73,0.15); color: #f85149; }
+        
+        .signal {
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .signal.buy { background: rgba(63,185,80,0.2); color: #3fb950; }
+        .signal.hold { background: rgba(88,166,255,0.2); color: #58a6ff; }
+        .signal.watch { background: rgba(210,153,34,0.2); color: #d29922; }
+        .signal.sell { background: rgba(248,81,73,0.2); color: #f85149; }
+        .signal.hot { background: rgba(248,81,73,0.3); color: #ff7b72; animation: pulse 2s infinite; }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background: #238636;
+            color: #fff;
+        }
+        .btn-primary:hover { background: #2ea043; }
+        .btn-ghost {
+            background: transparent;
+            color: #58a6ff;
+            border: 1px solid #30363d;
+        }
+        .btn-ghost:hover { background: #1f2937; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        /* 分析任务 */
+        .tasks-section { margin-bottom: 32px; }
+        .task-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .task-info { flex: 1; }
+        .task-name { font-weight: 600; font-size: 15px; }
+        .task-meta { color: #8b949e; font-size: 12px; margin-top: 4px; }
+        
+        .task-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .task-status.running { background: rgba(88,166,255,0.15); color: #58a6ff; }
+        .task-status.done { background: rgba(63,185,80,0.15); color: #3fb950; }
+        .task-status.error { background: rgba(248,81,73,0.15); color: #f85149; }
+        .task-status.timeout { background: rgba(210,153,34,0.15); color: #d29922; }
+        
+        /* 分析结果面板 */
+        .result-panel {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .result-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .result-header h3 { font-size: 18px; }
+        
+        .result-summary {
+            background: linear-gradient(135deg, #1f2937, #161b22);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #58a6ff;
+        }
+        .result-summary .advice {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .result-summary .advice.buy { color: #3fb950; }
+        .result-summary .advice.sell { color: #f85149; }
+        .result-summary .advice.hold { color: #58a6ff; }
+        .result-summary .advice.watch { color: #d29922; }
+        .result-summary .brief { color: #8b949e; font-size: 14px; line-height: 1.6; }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .level-card {
+            background: #1f2937;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+        .level-card .level-name { font-size: 12px; color: #8b949e; margin-bottom: 6px; }
+        .level-card .level-score { font-size: 24px; font-weight: 700; color: #58a6ff; }
+        .level-card .level-detail { font-size: 11px; color: #8b949e; margin-top: 4px; }
+        
+        .result-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .detail-section {
+            background: #1f2937;
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .detail-section h4 { font-size: 13px; color: #8b949e; margin-bottom: 10px; }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #30363d;
+        }
+        .detail-row:last-child { border-bottom: none; }
+        .detail-row .label { color: #8b949e; }
+        .detail-row .value { font-weight: 500; }
+        
+        /* 输入框 */
+        .input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .input-group input {
+            flex: 1;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px 16px;
+            color: #e6edf3;
+            font-size: 14px;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #58a6ff;
+        }
+        .input-group input::placeholder { color: #484f58; }
+        
+        /* Loading */
+        .loading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #58a6ff;
+            font-size: 14px;
+        }
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #30363d;
+            border-top-color: #58a6ff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .empty { 
+            text-align: center; 
+            padding: 40px; 
+            color: #8b949e; 
+            font-size: 14px;
+        }
+        
+        @media (max-width: 900px) {
+            .result-grid { grid-template-columns: repeat(2, 1fr); }
+            .result-detail { grid-template-columns: 1fr; }
+            .main { padding: 16px; }
+            .header { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="header">
+            <div>
+                <h1>🦏 灵犀量化看板</h1>
+                <div class="subtitle">缠论 × 蜡烛图 × 量价 × 真技术 | 四维共振</div>
+            </div>
+            <div style="color:#8b949e;font-size:12px;">
+                灵犀AI驱动 · 实时分析
+            </div>
+        </div>
+        
+        <div class="main">
+            <!-- 快速分析 -->
+            <div class="section-title">快速深度分析</div>
+            <div class="input-group">
+                <input v-model="inputCode" placeholder="输入股票代码，如 601899" @keyup.enter="quickAnalyze">
+                <input v-model="inputName" placeholder="股票名称，如 紫金矿业" @keyup.enter="quickAnalyze">
+                <button class="btn btn-primary" @click="quickAnalyze" :disabled="analyzing">
+                    <span v-if="analyzing" class="loading"><div class="spinner"></div>分析中...</span>
+                    <span v-else>🚀 深度分析</span>
+                </button>
+            </div>
+            
+            <!-- 当前分析任务 -->
+            <div v-if="runningTask" class="tasks-section">
+                <div class="section-title">当前分析</div>
+                <div class="task-card">
+                    <div class="task-info">
+                        <div class="task-name">{{ runningTask.stock_name }} ({{ runningTask.stock_code }})</div>
+                        <div class="task-meta">开始于 {{ runningTask.created_at }}</div>
+                    </div>
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        灵犀正在分析中，请稍候...
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 分析结果 -->
+            <div v-if="currentResult" class="result-panel">
+                <div class="result-header">
+                    <h3>{{ currentResult.stock_name }} ({{ currentResult.stock_code }}) 深度分析结果</h3>
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="score high" style="font-size:18px;padding:6px 16px;">
+                            综合 {{ currentResult.四维总分 }}/40
+                        </span>
+                        <button class="btn btn-ghost" @click="currentResult=null">✕ 关闭</button>
+                    </div>
+                </div>
+                
+                <div class="result-summary">
+                    <div class="advice" :class="currentResult.建议">
+                        {{ currentResult.建议 === '买入' ? '✅ 买入' : currentResult.建议 === '卖出' ? '🚨 卖出' : currentResult.建议 === '观望' ? '👀 观望' : '⏸️ 持有' }}
+                    </div>
+                    <div class="brief">{{ currentResult.简报 }}</div>
+                    <div style="margin-top:10px;display:flex;gap:20px;font-size:13px;">
+                        <span style="color:#f85149;">▲ 目标: {{ currentResult.目标 }}</span>
+                        <span style="color:#3fb950;">▼ 止损: {{ currentResult.止损 }}</span>
+                        <span style="color:#8b949e;">⏱️ {{ currentResult.timestamp }}</span>
+                    </div>
+                </div>
+                
+                <div class="result-grid">
+                    <div class="level-card" v-for="(data, level) in currentResult.analysis" :key="level">
+                        <div class="level-name">{{ level }}</div>
+                        <div class="level-score">{{ data.评分 || '—' }}/10</div>
+                        <div class="level-detail">{{ data.买卖点 || '—' }}</div>
+                    </div>
+                </div>
+                
+                <div class="result-detail">
+                    <div class="detail-section">
+                        <h4>📊 缠论结构</h4>
+                        <div class="detail-row" v-for="(data, level) in currentResult.analysis" :key="level">
+                            <span class="label">{{ level }}</span>
+                            <span class="value">{{ data.笔数 || '—' }}笔 / {{ data.中枢 || '—' }}中枢 / {{ data.背驰 || '—' }}</span>
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <h4>🕯️ 形态信号</h4>
+                        <div class="detail-row" v-for="(data, level) in currentResult.analysis" :key="level">
+                            <span class="label">{{ level }}</span>
+                            <span class="value">{{ data.分型 || '—' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 追踪池 -->
+            <div class="section-title">📋 追踪股票池</div>
+            <table class="pool-table" v-if="pool.length > 0">
+                <thead>
+                    <tr>
+                        <th>股票</th>
+                        <th>代码</th>
+                        <th>信号</th>
+                        <th>评分</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="stock in pool" :key="stock.code">
+                        <td class="stock-name">{{ stock.name }}</td>
+                        <td class="stock-code">{{ stock.code }}</td>
+                        <td>
+                            <span class="signal" :class="getSignalClass(stock.signal)">
+                                {{ stock.signal }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="score" :class="getScoreClass(stock.score)">
+                                {{ stock.score || '—' }}/40
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-ghost" @click="analyzeStock(stock)">
+                                深度分析
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div v-else class="empty">
+                <p>暂无追踪股票</p>
+            </div>
+            
+            <!-- 最近任务历史 -->
+            <div class="tasks-section" v-if="taskHistory.length > 0">
+                <div class="section-title">📜 分析历史</div>
+                <div v-for="task in taskHistory" :key="task.task_id" class="task-card">
+                    <div class="task-info">
+                        <div class="task-name">{{ task.stock_name }} ({{ task.stock_code }})</div>
+                        <div class="task-meta">{{ task.created_at }} → {{ task.done_at || '进行中' }}</div>
+                    </div>
+                    <span class="task-status" :class="task.status">{{ taskLabel(task.status) }}</span>
+                    <button v-if="task.result" class="btn btn-ghost" @click="showResult(task)">
+                        查看
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endraw %}
+    
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    inputCode: '',
+                    inputName: '',
+                    pool: [],
+                    runningTask: null,
+                    currentResult: null,
+                    taskHistory: [],
+                    analyzing: false,
+                    pollTimer: null
+                };
+            },
+            mounted() {
+                this.loadPool();
+                this.loadTasks();
+                // 每3秒轮询任务状态
+                this.pollTimer = setInterval(() => this.pollStatus(), 3000);
+            },
+            beforeUnmount() {
+                clearInterval(this.pollTimer);
+            },
+            methods: {
+                loadPool() {
+                    axios.get('/api/tracking-pool').then(r => {
+                        this.pool = r.data || [];
+                    }).catch(() => {
+                        this.pool = [];
+                    });
+                },
+                loadTasks() {
+                    axios.get('/api/tasks').then(r => {
+                        this.taskHistory = r.data.filter(t => t.status !== 'running');
+                        const running = r.data.find(t => t.status === 'running');
+                        this.runningTask = running || null;
+                        if (running && running.result) {
+                            this.currentResult = running.result;
+                        }
+                    });
+                },
+                pollStatus() {
+                    if (!this.runningTask) return;
+                    axios.get(`/api/result/${this.runningTask.task_id}`).then(r => {
+                        const task = r.data;
+                        if (task.status === 'done') {
+                            this.runningTask = null;
+                            this.currentResult = task.result;
+                            this.loadTasks();
+                        } else if (task.status === 'error' || task.status === 'timeout') {
+                            this.runningTask = null;
+                            alert(`分析失败: ${task.error}`);
+                            this.loadTasks();
+                        }
+                    });
+                },
+                quickAnalyze() {
+                    if (!this.inputCode) return;
+                    this.analyzeStock({
+                        code: this.inputCode,
+                        name: this.inputName || this.inputCode
+                    });
+                },
+                analyzeStock(stock) {
+                    this.analyzing = true;
+                    this.currentResult = null;
+                    axios.post('/api/analyze', {
+                        stock_code: stock.code,
+                        stock_name: stock.name
+                    }).then(r => {
+                        this.runningTask = {
+                            task_id: r.data.task_id,
+                            stock_code: stock.code,
+                            stock_name: stock.name,
+                            created_at: new Date().toLocaleString('zh-CN'),
+                            status: 'running'
+                        };
+                        this.analyzing = false;
+                        this.pollStatus();
+                    }).catch(err => {
+                        this.analyzing = false;
+                        alert('触发失败: ' + (err.response?.data?.error || err.message));
+                    });
+                },
+                showResult(task) {
+                    this.currentResult = task.result;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                },
+                getSignalClass(signal) {
+                    if (!signal) return '';
+                    if (['买入', '买'].includes(signal)) return 'buy';
+                    if (['持有', '强'].includes(signal)) return 'hot';
+                    if (['观望', '等'].includes(signal)) return 'watch';
+                    if (['卖出', '卖'].includes(signal)) return 'sell';
+                    return 'hold';
+                },
+                getScoreClass(score) {
+                    if (!score) return 'mid';
+                    if (score >= 24) return 'high';
+                    if (score >= 16) return 'mid';
+                    return 'low';
+                },
+                taskLabel(status) {
+                    const map = {
+                        running: '分析中',
+                        done: '已完成',
+                        error: '失败',
+                        timeout: '超时'
+                    };
+                    return map[status] || status;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

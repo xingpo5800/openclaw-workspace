@@ -12,6 +12,26 @@
     "openclaw-tavily-search": {
       "version": "0.1.0",
       "installedAt": 1774110567125
+    },
+    "gh": {
+      "version": "0.1.0",
+      "installedAt": 1774467037815
+    },
+    "git-cli-1-0-0": {
+      "version": "1.0.0",
+      "installedAt": 1774467044215
+    },
+    "todo-skill": {
+      "version": "1.0.0",
+      "installedAt": 1774467056102
+    },
+    "taskr": {
+      "version": "1.1.1",
+      "installedAt": 1774467059977
+    },
+    "py": {
+      "version": "1.0.1",
+      "installedAt": 1774467086734
     }
   }
 }

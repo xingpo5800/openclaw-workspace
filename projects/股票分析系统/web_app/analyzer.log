@@ -1,0 +1,91 @@
+[08:08:21] 🚀 灵犀分析器启动，监听队列...
+[08:08:21] 开始分析 紫金矿业(601899)，task_id=1216e553
+[08:14:17] 🚀 灵犀分析器启动，监听队列...
+[08:14:17] 📊 开始分析 紫金矿业(601899)，task_id=5455e410
+[08:14:17] 🔔 openclaw agent 已触发 (session=a-5455e410-c9eec698, pid=3720)
+[08:15:46] 🚀 灵犀分析器启动，监听队列...
+[08:15:46] 📊 开始分析 紫金矿业(601899)，task_id=c1f38db0
+[08:15:46] 🔔 openclaw agent 已触发 (session=a-c1f38db0-c83bc0a0)
+[08:15:56] ⚠️ openclaw 输出了错误: :\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+error: required option '-m, --message <text>' not specified
+
+[08:16:06] ⚠️ openclaw 输出了错误: :\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+error: required option '-m, --message <text>' not specified
+
+[08:16:16] ⚠️ openclaw 输出了错误: :\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+error: required option '-m, --message <text>' not specified
+
+[08:16:26] ⚠️ openclaw 输出了错误: :\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+error: required option '-m, --message <text>' not specified
+
+[08:16:36] ⚠️ openclaw 输出了错误: :\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+error: required option '-m, --message <text>' not specified
+
+[08:16:47] ⚠️ openclaw 输出了错误: :\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+error: required option '-m, --message <text>' not specified
+
+[08:17:23] 🚀 灵犀分析器启动，监听队列...
+[08:17:23] 📊 开始分析 紫金矿业(601899)，task_id=b599186c
+[08:17:23] 🔔 openclaw agent 已触发 (session=a-b599186c-f8a890ed, pid=3822)
+[08:17:33] ⚠️ openclaw 输出了错误: ed to load from /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts: Error: Cannot find module 'openclaw/plugin-sdk'
+Require stack:
+- /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts
+
+[08:17:43] ⚠️ openclaw 输出了错误: ed to load from /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts: Error: Cannot find module 'openclaw/plugin-sdk'
+Require stack:
+- /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts
+
+[08:17:53] ⚠️ openclaw 输出了错误: ed to load from /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts: Error: Cannot find module 'openclaw/plugin-sdk'
+Require stack:
+- /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts
+
+[08:18:03] ⚠️ openclaw 输出了错误: ed to load from /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts: Error: Cannot find module 'openclaw/plugin-sdk'
+Require stack:
+- /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts
+
+[08:18:13] ⚠️ openclaw 输出了错误: ed to load from /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts: Error: Cannot find module 'openclaw/plugin-sdk'
+Require stack:
+- /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts
+
+[08:18:23] ⚠️ openclaw 输出了错误: ed to load from /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts: Error: Cannot find module 'openclaw/plugin-sdk'
+Require stack:
+- /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts
+
+[08:18:33] ⚠️ openclaw 输出了错误: ed to load from /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts: Error: Cannot find module 'openclaw/plugin-sdk'
+Require stack:
+- /Users/kevin/.openclaw/extensions/openclaw-weixin/index.ts
+
+[08:18:43] ⚠️ openclaw 输出了错误: ols
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+
+[08:18:53] ⚠️ openclaw 输出了错误: ols
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+
+[08:19:03] ⚠️ openclaw 输出了错误: ols
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+
+[08:19:13] ⚠️ openclaw 输出了错误: ols
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+
+[08:19:23] ⚠️ openclaw 输出了错误: ols
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+
+[08:19:23] ⏰ 紫金矿业 等待结果超时
+[08:19:26] 📊 开始分析 紫金矿业(601899)，task_id=46e28d6d
+[08:19:26] 🔔 openclaw agent 已触发 (session=a-46e28d6d-06b577d9, pid=3988)
+[08:21:27] ⏰ 紫金矿业 等待结果超时
+[08:21:30] 📊 开始分析 紫金矿业(601899)，task_id=32bdde5b
+[08:21:30] 🔔 openclaw agent 已触发 (session=a-32bdde5b-757ad397, pid=4036)
+[08:23:11] ✅ 紫金矿业 分析完成，四维总分=19.5
+[08:23:14] 📊 开始分析 紫金矿业(601899)，task_id=0d59ca35
+[08:23:14] 🔔 openclaw agent 已触发 (session=a-0d59ca35-cecae1a0, pid=4080)
+[08:23:54] ✅ 紫金矿业 分析完成，四维总分=19.5
+[09:17:02] 📊 开始分析 000001(000001)，task_id=0141a260
+[09:17:02] 🔔 openclaw agent 已触发 (session=a-0141a260-d083536b, pid=4494)
+[09:19:03] ⏰ 000001 等待结果超时
+[13:40:24] 📊 开始分析 601899(601899)，task_id=212a3035
+[13:40:24] 🔔 openclaw agent 已触发 (session=a-212a3035-234ec965, pid=8152)
+[13:42:24] ✅ 601899 分析完成，四维总分=20.1
+[13:42:27] 📊 开始分析 601899(601899)，task_id=89553c07
+[13:42:27] 🔔 openclaw agent 已触发 (session=a-89553c07-5a6f2b4e, pid=8190)
+[13:42:58] ✅ 601899 分析完成，四维总分=20.1
