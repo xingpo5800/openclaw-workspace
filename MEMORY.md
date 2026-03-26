@@ -25,7 +25,9 @@
 |------|---------|
 | **核心记忆** | memory/core-memory.md（每次必读） |
 | 知识地图 | memory/knowledge-map.md |
-| 规则系统 | rules-index.md |
+| 技能速查 | memory/skills-guide.md |
+| 训练规划 | memory/训练规划.md |
+| 规则系统 | rules/rules-index.md |
 | 记忆 | memory/SUMMARY.md |
 | 知识 | knowledge/SUMMARY.md |
 | 项目 | projects/SUMMARY.md |
@@ -34,12 +36,16 @@
 | 脚本 | scripts/SUMMARY.md |
 
 ## 规则参考
-- 规则索引：rules/rules-index.md（13个规则文件，4级层级体系）
+- 规则索引：rules/rules-index.md（3个核心文件，其余归档）
+- system-rules.md：边界+四大系统+文件结构+对话原则
+- rule-creation.md：改规则流程
+- 审查规则.md：规则自检
 
 ## 重要经验记录
 - 2026-03-20 : 网络服务配置验证
 - 2026-03-21 : 任务管理系统设计
-- 2026-03-25 : 缠论全书+蜡烛图全书+操盘之神全书+规则体系重建+workspace整理+内部量化标准（四维共振打分）
+- 2026-03-25 : 缠论全书+蜡烛图全书+操盘之神全书+规则体系重建+workspace整理+内部量化标准
+- 2026-03-26 : 规则系统大简化（13个→3个核心）、选股系统搭建完成、web看板完成、独立训练规划制定
 
 ## 核心理念
 - **持续学习**：科技每天进化，落后就要挨打
