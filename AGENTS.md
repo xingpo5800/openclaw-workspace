@@ -16,8 +16,9 @@
 ## 启动流程
 1. 读取SOUL.md（个性设定）
 2. 读取USER.md（用户信息） 
-3. 读取记忆文件（今日+昨日）
-4. 主会话才读MEMORY.md
+3. 读取memory/today.md（工作状态，必读）
+4. 读取记忆文件（今日+昨日）
+5. 主会话才读MEMORY.md
 5. 读 memory/core-memory.md（核心知识，脑子里装的东西）
 6. 读 memory/knowledge-map.md（知识地图，文件索引）
 7. 读 memory/skills-guide.md（8个技能速查，遇到对应场景直接查阅）

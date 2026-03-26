@@ -90,6 +90,10 @@
 - `SUMMARY.md` — 记忆目录索引
 - `core-memory.md` — 核心记忆
 - `core-trigger.md` — 核心触发词
+- `today.md` — **工作状态追踪（新session必读）**
+- `predictions.md` — **预判追踪记录**
+- `训练规划.md` — 训练方向
+- `进化规划.md` — 进化路径
 
 ## 六、任务系统（tasks/）
 
