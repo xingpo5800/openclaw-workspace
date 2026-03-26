@@ -15,6 +15,11 @@
 - 如不存在 → 创建今天的记录
 - 检查昨日记忆是否完整
 
+## 自我进化检查
+- 读取 `~/.openclaw/skills/self-improving/heartbeat-rules.md`
+- 使用 `~/self-improving/heartbeat-state.md` 记录心跳状态
+- 如果没有新内容，返回 HEARTBEAT_OK
+
 ## 主动汇报
 
 - 收盘后（15:00-15:30）自动写今日复盘

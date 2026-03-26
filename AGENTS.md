@@ -24,6 +24,14 @@
 7. 读 memory/skills-guide.md（8个技能速查，遇到对应场景直接查阅）
 
 ## 工作流
+
+收到任务 → 思考（想清楚再动手）→ 执行 → 汇报（主动说结果）
+                                      ↘ 顺便更新记忆（不过夜）
+
+**Before any non-trivial task:**
+- 读取 `~/self-improving/memory.md`
+- 检查关联文件：优先读 matching domain/project 文件
+- 不确定的 → 存 factual history 在 memory/，存 reusable performance lessons 在 self-improving/
 收到任务 → 思考（想清楚再动手）→ 执行 → 汇报（主动说结果）
                                       ↘ 顺便更新记忆（不过夜）
 
@@ -31,6 +39,7 @@
 - **每日记录**：memory/YYYY-MM-DD.md
 - **长期记忆**：MEMORY.md（仅主会话可用）
 - **核心知识**：memory/core-memory.md（量化体系/策略/追踪股，必须在）
+- **自我进化**：~/self-improving/（self-improving skill）— 执行质量提升记忆（偏好/工作流/风格模式/对错复盘）
 - **原则**：重要信息必须写入文件才能记住，执行中顺手更新（不过夜）
 
 ## 行为准则
