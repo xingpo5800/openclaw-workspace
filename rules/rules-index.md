@@ -1,54 +1,29 @@
 # 规则索引
 
-## 层级体系（审查规则定义）
+## 核心规则（3个）
 
-| 层级 | 文件 | 说明 |
-|------|------|------|
-| 最高 | 核心规则.md | 不可违背的底线 |
-| 高 | 审查规则.md | 规则本身的规则 |
-| 中 | system-rules.md | 系统核心原则+执行原则+自检机制 |
-| 低 | session-rules.md | 工作流程（启动→执行→完成） |
-| 低 | 执行感知.md | 执行中感知与诊断 |
-| 低 | file-management.md | 文件管理（根目录/临时文件/媒体文件/大文件） |
-| 低 | 学习边界.md | 学习边界与自检 |
-| 低 | task-management.md | 任务管理 |
-| 低 | token-saver.md | 省tokens |
-| 低 | rule-creation.md | 规则创建规范 |
-| 低 | animation-script.md | 动画脚本 |
-| 低 | 备份规则.md | 备份机制 |
-| 低 | rules-index.md | 规则索引（本文档） |
+| 文件 | 作用 |
+|------|------|
+| system-rules.md | 边界+四大系统+文件结构+对话原则 |
+| rule-creation.md | 改规则的流程 |
+| 审查规则.md | 规则自检 |
 
-## 审查类型与对应文件
+## 归档文件（9个旧规则，已不用）
 
-| 审查类型 | 对应职责文件 |
-|---------|------------|
-| 写入前审查 | rule-creation.md（创建规范） |
-| 写入后审查 | 审查规则.md（闭环检查） |
-| 系统健康审查 | system-rules.md（自检机制） |
-| 调用审查 | 审查规则.md（周期性检查） |
+| 文件 |
+|------|
+| 核心规则.md.bak |
+| session-rules.md.bak |
+| 执行感知.md.bak |
+| 学习边界.md.bak |
+| 备份规则.md.bak |
+| file-management.md.bak |
+| task-management.md.bak |
+| token-saver.md.bak |
+| animation-script.md.bak |
 
-## 完整执行流程
-
-1. 读取SOUL.md、USER.md、IDENTITY.md、AGENTS.md
-2. 读取memory/rules-index.md（规则索引）
-3. 读取memory/YYYY-MM-DD.md（今日记忆）
-4. 搜索当前任务需要的相关经验
-5. **执行任务**
-6. **完成后自检**：规则用对了吗？发现问题了吗？
-7. **有规则修改→触发审查规则闭环**
-8. **更新索引**
-
-## 六问速查
-
-| 问题 | 对应文件 |
-|------|---------|
-| 这是规则问题吗？ | 审查规则.md |
-| 要修改/创建规则吗？ | rule-creation.md |
-| 怎么执行这个任务？ | session-rules.md |
-| 执行中发现问题怎么办？ | 执行感知.md |
-| 学的东西对不对？ | 学习边界.md |
-| 记忆/规则要不要更新？ | system-rules.md（自检） |
+归档文件不加载，按需可查阅。
 
 ---
 
-*更新时间：2026-03-25*
+*更新时间：2026-03-26*

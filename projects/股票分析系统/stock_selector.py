@@ -34,11 +34,11 @@ REQUEST_TIMEOUT = 10
 MAX_RETRIES = 2
 
 # 筛选条件
-SLOPE_FIRST_THRESHOLD = 20   # 第一批初筛
-SLOPE_FINAL_THRESHOLD = 30   # 最终门槛
-RSI_MAX = 52
-VOL_RATIO_MIN = 0.85
-VOL_RATIO_MAX = 1.05
+SLOPE_FIRST_THRESHOLD = 20   # 第一批初筛（灵敏捕捉量能积蓄初期）
+SLOPE_FINAL_THRESHOLD = 20   # 最终门槛（放宽，捕捉积蓄期票）
+RSI_MAX = 55                # 放宽
+VOL_RATIO_MIN = 0.70        # 放宽：从下往上靠近中
+VOL_RATIO_MAX = 1.20        # 放宽：刚上穿后也算
 FIRST_BATCH_SIZE = 500       # 第一批取500只
 KLINE_MIN_DAYS = 65          # K线最少天数
 
