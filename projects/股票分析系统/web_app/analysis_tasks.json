@@ -296,9 +296,10 @@
     "task_id": "097114fe",
     "stock_code": "大金重工",
     "stock_name": "大金重工",
-    "status": "running",
+    "status": "timeout",
     "created_at": "2026-03-26 23:01:35",
     "result": null,
-    "done_at": "2026-03-26 23:01:37"
+    "done_at": "2026-03-26 23:03:38",
+    "error": "等待结果超时（120秒）"
   }
 }

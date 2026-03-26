@@ -23,3 +23,98 @@ Config warnings:\n- plugins.entries.minimax-portal-auth: plugin not found: minim
 [plugins] feishu_wiki: Registered feishu_wiki tool
 [plugins] feishu_drive: Registered feishu_drive tool
 [plugins] feishu_bitable: Registered bitable tools
+Gateway agent failed; falling back to embedded: Error: gateway timeout after 150000ms
+Gateway target: ws://127.0.0.1:18789
+Source: local loopback
+Config: /Users/kevin/.openclaw/openclaw.json
+Bind: loopback
+Config warnings:\n- plugins.entries.minimax-portal-auth: plugin not found: minimax-portal-auth (stale config entry ignored; remove it from plugins config)
+- plugins.entries.openclaw-weixin: plugin not found: openclaw-weixin (stale config entry ignored; remove it from plugins config)
+[skills] Skipping skill path that resolves outside its configured root.
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[plugins] plugins.allow is empty; discovered non-bundled plugins may auto-load: feishu (/Users/kevin/.nvm/versions/node/v24.14.0/lib/node_modules/openclaw/dist/extensions/feishu/index.js). Set plugins.allow to explicit trusted ids.
+[plugins] feishu_doc: Registered feishu_doc, feishu_app_scopes
+[plugins] feishu_chat: Registered feishu_chat tool
+[plugins] feishu_wiki: Registered feishu_wiki tool
+[plugins] feishu_drive: Registered feishu_drive tool
+[plugins] feishu_bitable: Registered bitable tools
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10980 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10991 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=minimax-portal/MiniMax-M2.5-highspeed reason=timeout next=iflow/glm-4.7
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10724 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10732 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/glm-4.7 reason=timeout next=iflow/iflow-rome-30ba3b
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10664 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10671 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/iflow-rome-30ba3b reason=timeout next=iflow/deepseek-v3.2
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10663 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10670 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/deepseek-v3.2 reason=timeout next=iflow/glm-5
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10662 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10669 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/glm-5 reason=timeout next=iflow/qwen3-coder-plus
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10674 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10681 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/qwen3-coder-plus reason=timeout next=iflow/kimi-k2-thinking
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10658 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10665 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/kimi-k2-thinking reason=timeout next=iflow/minimax-m2.5
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10660 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10667 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/minimax-m2.5 reason=timeout next=iflow/kimi-k2.5
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10662 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10669 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/kimi-k2.5 reason=timeout next=iflow/kimi-k2-0905
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10662 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10669 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=iflow/kimi-k2-0905 reason=timeout next=zai/glm-5
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10740 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10747 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=zai/glm-5 reason=timeout next=zai/glm-4.7-flash
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10681 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10689 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=zai/glm-4.7-flash reason=timeout next=zai/glm-4.5-flash
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10670 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10677 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=zai/glm-4.5-flash reason=timeout next=localai/qwen2.5-coder.gguf
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10670 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10677 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=localai/qwen2.5-coder.gguf reason=timeout next=minimax-portal/MiniMax-M2.5-Lightning
+[tools] tools.profile (coding) allowlist contains unknown entries (apply_patch, image_generate). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.
+[diagnostic] lane task error: lane=main durationMs=10684 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[diagnostic] lane task error: lane=session:a-097114fe-e84e465c durationMs=10691 error="Error: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock"
+[model-fallback/decision] model fallback decision: decision=candidate_failed requested=minimax-portal/MiniMax-M2.5-highspeed candidate=minimax-portal/MiniMax-M2.5-Lightning reason=timeout next=none
+Error: All models failed (15): minimax-portal/MiniMax-M2.5-highspeed: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | iflow/glm-4.7: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | iflow/iflow-rome-30ba3b: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | iflow/deepseek-v3.2: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | iflow/glm-5: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | iflow/qwen3-coder-plus: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | iflow/kimi-k2-thinking: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | iflow/minimax-m2.5: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | iflow/kimi-k2.5: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | iflow/kimi-k2-0905: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | zai/glm-5: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | zai/glm-4.7-flash: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | zai/glm-4.5-flash: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | localai/qwen2.5-coder.gguf: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout) | minimax-portal/MiniMax-M2.5-Lightning: session file locked (timeout 10000ms): pid=3952 /Users/kevin/.openclaw/agents/main/sessions/a-097114fe-e84e465c.jsonl.lock (timeout)
